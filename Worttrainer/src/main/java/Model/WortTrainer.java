@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class WortTrainer {
     WortListe wl=new WortListe();
-    int z=0;
-    int lang=0;
+    int aktuell = 0;
+    int lang=2;
     int abgf=0;
     int richtig=0;
 
@@ -24,9 +24,16 @@ public class WortTrainer {
      */
     public WortEintrag random(){
         Random rand= new Random ();
-        z= rand.nextInt(wl.leange());
-        return wl.getArr(z);
+        aktuell = rand.nextInt(wl.leange());
+        return wl.getArr(aktuell);
     }
+
+    public void refresh(){
+        this.abgf=getAbgf();
+        this.richtig=getRichtig();
+        this.lang=getLang();
+    }
+
 
     /**
      * Gibt den aktuell gewählten Worteintrag zurück.
@@ -34,8 +41,8 @@ public class WortTrainer {
      */
     public WortEintrag aktuell(){
         WortEintrag temp=null;
-        if(z>=0) {
-            temp=wl.getArr(z);
+        if(aktuell >=0) {
+            temp=wl.getArr(aktuell);
         }
         else{
             System.out.println("Nicht möglich!");
@@ -50,7 +57,7 @@ public class WortTrainer {
      */
     public boolean check(String para){
         abgf+=1;
-        if(para.equals(wl.getArr(z).getW())){
+        if(para.equals(wl.getArr(aktuell).getW())){
             richtig+=1;
             return true;
         }
@@ -67,7 +74,7 @@ public class WortTrainer {
     public boolean checkIgnoreCase(String para){
         abgf+=1;
         String temp1=para.toLowerCase();
-        if(temp1.equals(wl.getArr(z).getW())){
+        if(temp1.equals(wl.getArr(aktuell).getW())){
             richtig+=1;
             return true;
         }
@@ -98,5 +105,11 @@ public class WortTrainer {
 
     public void setRichtig(int richtig) {
         this.richtig = richtig;
+    }
+    public void setLang(int lang){
+        this.lang = lang;
+    }
+    public void setAktuell(int aktuell){
+        this.aktuell = aktuell;
     }
 }

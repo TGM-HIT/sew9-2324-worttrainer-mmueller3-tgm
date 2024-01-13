@@ -1,8 +1,6 @@
 package Controller;
 
-import Model.WortEintrag;
-import Model.WortListe;
-import Model.WortTrainer;
+import Model.*;
 import View.Frame;
 import View.Panel;
 
@@ -26,6 +24,12 @@ public class controller implements ActionListener {
     private WortEintrag we2=new WortEintrag("Maus","https://www.jr-farm.de/media/image/ee/44/22/Maus_23162751_M_frei_ohne_SchwanzDX94OBE1aiEDz_800x800.jpg");
     private WortListe wl= new WortListe();
     private WortTrainer wt= new WortTrainer(wl);
+
+    /**
+    change persistenz Strategy to JSON,XML, ...
+    **/
+    //private persistenzStrategie ps= new JsonPersistenz();
+    private persistenzStrategie ps= new FilePersistenz();
 
 
     public controller() throws MalformedURLException, URISyntaxException {
@@ -67,6 +71,22 @@ public class controller implements ActionListener {
                 }
                 else{
                     pl.update(wt.getRichtig(),wt.getAbgf(),false);
+                }
+                break;
+            case "save":
+                try {
+                    ps.speichern(wt);
+                } catch (IOException ev) {
+                    ev.printStackTrace();
+                }
+                break;
+            case "load":
+                try {
+                    wt=ps.laden();
+                    pl.update(wt.getRichtig(),wt.getAbgf(),true);
+                    pl.bild(wt.aktuell().getUrl());
+                } catch (IOException ev) {
+                    ev.printStackTrace();
                 }
                 break;
         }

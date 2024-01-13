@@ -17,13 +17,17 @@ public class WortListe {
     }
 
     /**
-     * Diese Mathode holt sich den Worteintrag an der Stelle z.
+     * Diese Methode holt sich den Worteintrag an der Stelle z.
      * @param z
      * @return
      */
     public WortEintrag getArr(int z) {
+        if (z < 0 || z >= arr.length) {
+            throw new ArrayIndexOutOfBoundsException("Index out of bounds: " + z);
+        }
         return arr[z];
     }
+
 
     /**
      * Diese Methode löscht den Worteintrag mit dem Wort w.

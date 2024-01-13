@@ -80,4 +80,17 @@ public class Panel extends JPanel {
         this.add(o, BorderLayout.PAGE_START);
         this.add(u, BorderLayout.PAGE_END);
     }
+
+    /**
+     * Es wird das Bild bearbeitet.
+     * @param url
+     * @throws MalformedURLException
+     */
+    public void bild(String url) throws MalformedURLException {
+        ImageIcon icon = new ImageIcon(new URL(url));
+        Image image = icon.getImage(); // umwandeln in ein Image-Objekt
+        image = image.getScaledInstance(250, 250,  Image.SCALE_SMOOTH); // skalieren auf gewünschte Größe
+        jl[5].setIcon(new ImageIcon(image)); // anzeigen in einem JLabel
+        this.add(jl[5]);
+    }
 }

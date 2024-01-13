@@ -93,4 +93,32 @@ public class Panel extends JPanel {
         jl[5].setIcon(new ImageIcon(image)); // anzeigen in einem JLabel
         this.add(jl[5]);
     }
+
+
+    /**
+     * Es werden alle Stats geupdated.
+     * @param r
+     * @param a
+     * @param b
+     */
+    public void update(int r, int a, boolean b){
+        if(b==true){
+            jl[2].setText(""+r);
+            jl[4].setText(""+a);
+            jl[6].setText("Richtig! Gut gemacht :)");
+        }
+        else{
+            jl[4].setText(""+a);
+            jl[6].setText("Leider Falsch!");
+        }
+    }
+
+
+    /**
+     * Es wird die Eingabe des Textfeldes zurückgegeben.
+     * @return
+     */
+    public String getEin(){
+        return tf.getText();
+    }
 }

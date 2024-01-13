@@ -6,8 +6,10 @@ import Model.WortTrainer;
 import View.Frame;
 import View.Panel;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 
@@ -35,7 +37,39 @@ public class controller implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.print("nothing");
+        Object t= e.getActionCommand();
+        switch(t.toString()){
+            case "reset":
+                this.wt=new WortTrainer(wl);
+                pl.update(0,0,true);
+                break;
+            case "plus":
+                String temp= JOptionPane.showInputDialog(null,"Bitte das Wort eingeben: ");
+                String temp1=JOptionPane.showInputDialog(null,"Bitte die URL eingeben: ");
+                WortEintrag temp2= null;
+                try {
+                    temp2 = new WortEintrag(temp,temp1);
+                } catch (MalformedURLException ex) {
+                    throw new RuntimeException(ex);
+                } catch (URISyntaxException ex) {
+                    throw new RuntimeException(ex);
+                }
+                wl.add(temp2);
+                break;
+            case "eingabe":
+                if(wt.check(pl.getEin())==true){
+                    pl.update(wt.getRichtig(),wt.getAbgf(),true);
+                    try {
+                        pl.bild(wt.random().getUrl());
+                    } catch (MalformedURLException ev) {
+                        ev.printStackTrace();
+                    }
+                }
+                else{
+                    pl.update(wt.getRichtig(),wt.getAbgf(),false);
+                }
+                break;
+        }
     }
     public static void main(String[] args) throws MalformedURLException, URISyntaxException {
         new controller();

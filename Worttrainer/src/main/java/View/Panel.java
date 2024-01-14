@@ -12,7 +12,7 @@ public class Panel extends JPanel {
     private controller c;
     private JButton[] b=new JButton[4];
     private JTextField tf= new JTextField();
-    private JLabel[] jl = new JLabel[8];
+    private JLabel[] jl = new JLabel[9];
 
     /**
      * Konstruktor
@@ -44,6 +44,7 @@ public class Panel extends JPanel {
         jl[4]= new JLabel("0", SwingConstants.CENTER);
         jl[5]= new JLabel("Letztes Wort: ");
         jl[6]= new JLabel("Noch keine Eingabe vorhanden! ", SwingConstants.CENTER);
+        jl[7]= new JLabel();
 
         b[0]=new JButton();
         b[0].setText("Zuruecksetzen");
@@ -72,10 +73,11 @@ public class Panel extends JPanel {
         u.add(b[1]);
         u.add(jl[5]);
         u.add(jl[6]);
+        u.add(jl[7]);
         u.add(b[2]);
         u.add(b[3]);
 
-        jl[5]=new JLabel();
+        jl[8]=new JLabel();
 
         this.add(o, BorderLayout.PAGE_START);
         this.add(u, BorderLayout.PAGE_END);
@@ -90,8 +92,8 @@ public class Panel extends JPanel {
         ImageIcon icon = new ImageIcon(new URL(url));
         Image image = icon.getImage(); // umwandeln in ein Image-Objekt
         image = image.getScaledInstance(250, 250,  Image.SCALE_SMOOTH); // skalieren auf gewünschte Größe
-        jl[5].setIcon(new ImageIcon(image)); // anzeigen in einem JLabel
-        this.add(jl[5]);
+        jl[8].setIcon(new ImageIcon(image)); // anzeigen in einem JLabel
+        this.add(jl[8], SwingConstants.CENTER);
     }
 
 

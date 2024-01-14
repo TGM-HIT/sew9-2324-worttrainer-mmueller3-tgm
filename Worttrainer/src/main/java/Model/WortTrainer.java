@@ -51,7 +51,7 @@ public class WortTrainer {
     }
 
     /**
-     * Überprüft ob das übergegebene Wort das selbe ist, wie das aktuell ausgewählte.
+     * Überprüft, ob das übergegebene Wort dasselbe ist, wie das aktuell ausgewählte.
      * @param para
      * @return
      */

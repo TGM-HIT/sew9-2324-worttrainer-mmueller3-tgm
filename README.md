@@ -10,7 +10,7 @@ Die Anwendung wurde mit Gradle erstellt und verwendet Java GUI für die Benutzer
 - Anzeige von Wörtern und Bildern
 - Statistiken anschauen
 - Das Spiel speichern und laden
-- 
+
 ## Systemanforderungen
 
 Um die Worttrainer-Anwendung auszuführen, benötigen Sie:

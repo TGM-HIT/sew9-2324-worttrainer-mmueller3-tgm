@@ -28,8 +28,8 @@ public class controller implements ActionListener {
     /**
     change persistenz Strategy to JSON,XML, ...
     **/
-    //private persistenzStrategie ps= new JsonPersistenz();
-    private persistenzStrategie ps= new FilePersistenz();
+    private persistenzStrategie ps= new JsonPersistenz();
+    //private persistenzStrategie ps= new FilePersistenz();
 
 
     public controller() throws MalformedURLException, URISyntaxException {
